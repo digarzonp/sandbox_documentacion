@@ -6,12 +6,12 @@ import PacienteController from '../controllers/PacienteController'
 class PacienteRouter{
 
 	router:Router
-	pacienteContriller:PacienteController
+	pacienteController:PacienteController
 
 	constructor(){
 
 		this.router= Router()
-		this.pacienteContriller= new PacienteController()
+		this.pacienteController= new PacienteController()
 		this.routes()
 
 	}
@@ -21,18 +21,18 @@ class PacienteRouter{
 		this.router.get(
 			'/pacientes',
 			(req:Request, res:Response)=>{
-				this.pacienteContriller.obtenerPacientes(req, res)
+				this.pacienteController.obtenerPacientes(req, res)
 			}
 		)
 		//crear pacientes
 		this.router.post(
 			'/crear_paciente',
 			(req:Request, res:Response)=>{
-				this.pacienteContriller.CrearPaciente(req, res)
+				this.pacienteController.CrearPaciente(req, res)
 			}
 
 		)
 	}
 }
 
-export default PacienteRouter
+export default new PacienteRouter().router
